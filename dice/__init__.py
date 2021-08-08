@@ -1,0 +1,1 @@
+from .dice_roller import parse_and_eval_dice
