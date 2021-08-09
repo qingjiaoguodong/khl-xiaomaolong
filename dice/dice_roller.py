@@ -7,7 +7,7 @@ ND_CAP = 100 # 超过这个值的单次掷骰采用快速算法，或者直接�
 
 
 import re, dataclasses, math, random, string,typing
-from algorithms import mdn, mdnsr, mdnlr, binomial
+from dice.algorithms import mdn, mdnsr, mdnlr, binomial
 
 
 binary_ops = {
