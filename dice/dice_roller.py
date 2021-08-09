@@ -7,7 +7,7 @@ ND_CAP = 100 # 超过这个值的单次掷骰采用快速算法，或者直接�
 
 
 import re, dataclasses, math, random, string,typing
-from dice.algorithms import mdn, mdnsr, mdnlr, binomial
+from alg import mdn, mdnsr, mdnlr, binomial
 
 
 binary_ops = {
@@ -330,7 +330,7 @@ def parse_and_eval_dice(expr: str):
     
     def summarizer(dice_expr, dices, val):
         if isinstance(dice_expr, DiceExpr):
-            if dices is None:
+            if dices is None or len(dices) == 1:
                 return f'{dice_expr} = {val}' 
             dice_sort = sorted(((v, i) for i, v in enumerate(dices)), reverse=(dice_expr.sl == 'l'))
             dice_sort = sorted((i, v, rank < dice_expr.nsl and dice_expr.nsl < dice_expr.nd) for rank, (v, i) in enumerate(dice_sort))
@@ -361,7 +361,7 @@ if __name__ == '__main__':
     
     def summarizer(dice_expr, dices, val):
         if isinstance(dice_expr, DiceExpr):
-            if dices is None:
+            if dices is None or len(dices) == 1:
                 return f'{dice_expr} = {val}' 
             dice_sort = sorted(((v, i) for i, v in enumerate(dices)), reverse=(dice_expr.sl == 'l'))
             dice_sort = sorted((i, v, rank < dice_expr.nsl and dice_expr.nsl < dice_expr.nd) for rank, (v, i) in enumerate(dice_sort))
