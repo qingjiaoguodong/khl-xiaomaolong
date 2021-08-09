@@ -16,13 +16,6 @@ cert = khl.Cert(client_id = config['client_id'],
 bot = khl.Bot(cmd_prefix = ['.'], cert = cert)
 
 
-# replicate the message, in KMarkdown
-@bot.command(name = 'md')
-async def md(msg: khl.message.TextMsg, *dummy):
-    content = msg.content[4:]
-    await bot.delete(msg.msg_id)
-    await msg.ctx.send(f"(met){msg.author_id}(met)说:\n" + content)
-
 # dice parsing and evaluation
 @bot.command(name = 'r')
 async def r(msg: khl.message.TextMsg, *dummy):
